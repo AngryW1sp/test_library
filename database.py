@@ -4,11 +4,13 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.engine import URL
 import psycopg2
 
+from settings import get_db_url
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql+psycopg2://postgres:123456@localhost:5432/postgres"
 
-engine = create_engine(SQLALCHEMY_DATABASE_URL)
+
+
+engine = create_engine(get_db_url())
 SessionLocal = sessionmaker(autocommit=False, autoflush=False, bind=engine)
 
 def get_db():

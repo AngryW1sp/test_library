@@ -1,8 +1,8 @@
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, EmailStr
 
 class UserCreate(BaseModel):
     name: str
-    email: str
+    email: EmailStr
 
 class UserRead(UserCreate):
     id: int
@@ -23,3 +23,18 @@ class BookRead(BookCreate):
 
     class Config:
         orm_mode = True
+
+class LibrarianCreate(BaseModel):
+    email: EmailStr
+    password: str
+
+class LibrarianRead(LibrarianCreate):
+    id: int
+    
+    class Config:
+        orm_mode = True
+
+class Token(BaseModel):
+    access_token: str
+    token_type: str
+    
